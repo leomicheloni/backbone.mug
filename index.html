@@ -12,10 +12,21 @@
 		<script type="text/javascript" src="scripts/models/task.js"></script>
 		<script type="text/javascript" src="scripts/models/tasks.js"></script>
 		<script type="text/javascript" src="scripts/views/taskview.js"></script>
+		<script type="text/javascript" src="scripts/rutes/router.js"></script>
 		
 		
 		<script type="text/javascript">		
 			$(function(){			
+				var router = new Router();
+				
+				router.on("route:main", function(){
+					console.log("main");
+				});
+
+				router.on("route:vista1", function(p){
+					console.log("vista 1 " + p);
+				});
+				
 				task = new Task({name: "hacerle la comida a Roger"});
 				
 				var tasks = new Tasks([{name: "llamar a la tia"}, {name: "hablar con Roger"}]);
@@ -23,6 +34,8 @@
 				var taskview = new Taskview({model: task});
 				
 				taskview.render();
+				
+				Backbone.history.start();
 			});
 			
 			</script>
