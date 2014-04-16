@@ -1,19 +1,36 @@
 <html>
 	<head>
+		<script type="text/template" id="tmptask">
+			<div><div class='name'><%-name%></div>
+				<input type="checkbox" <%- done==true? "checked='checked'": "" %> />
+			</div>
+		</script>
+
 		<script type="text/javascript" src="scripts/jquery/dist/jquery.min.js"></script>
 		<script type="text/javascript" src="scripts/underscore/underscore.js"></script>
 		<script type="text/javascript" src="scripts/backbone/backbone.js"></script>
+		<script type="text/javascript" src="scripts/models/task.js"></script>
+		<script type="text/javascript" src="scripts/models/tasks.js"></script>
+		<script type="text/javascript" src="scripts/views/taskview.js"></script>
 		
-		<script type="text/javascript">
+		
+		<script type="text/javascript">		
+			$(function(){			
+				task = new Task({name: "hacerle la comida a Roger"});
+				
+				var tasks = new Tasks([{name: "llamar a la tia"}, {name: "hablar con Roger"}]);
 
-		
-		
-		</script>
+				var taskview = new Taskview({model: task});
+				
+				taskview.render();
+			});
+			
+			</script>
+		</head>
 		
 		<body>
 		
 		<div id="container"></div>
 		
 		</body>
-	</head>
 </html>
